@@ -29,7 +29,7 @@ class AdvertisementSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         if self.context["request"].method!='PATCH':
             if Advertisement.objects.filter(creator_id=user.id):
-                if Advertisement.objects.filter(creator_id=user.id).filter(status='OPEN').count()>3:
+                if Advertisement.objects.filter(creator_id=user.id).filter(status='OPEN').count()>9:
                     raise ValidationError('Запрещено иметь более 10 открытых объявлений')
 
         return data
